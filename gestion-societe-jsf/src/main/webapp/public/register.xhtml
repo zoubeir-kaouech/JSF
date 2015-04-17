@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/template.xhtml">
+	<ui:define name="pageTitle">Register ...</ui:define>
+	<ui:define name="pageContent">
+
+
+		<div id="signup-box" class="signup-box visible widget-box no-border">
+			<div class="widget-body">
+				<div class="widget-main">
+					<h4 class="header green lighter bigger">
+						<i class="ace-icon fa fa-users blue"></i> New Developer
+						Registration
+					</h4>
+
+					<div class="space-6"></div>
+					<p>Enter your details to begin:</p>
+
+					<h:form>
+						<fieldset>
+							<label class="block clearfix"> <span
+								class="block input-icon input-icon-right"> <input
+									type="email" class="form-control" placeholder="Email"
+									jsf:value="#{inscriptionBean.developpeur.email}" /> <i
+									class="ace-icon fa fa-envelope"></i>
+							</span>
+							</label> <label class="block clearfix"> <span
+								class="block input-icon input-icon-right"> <input
+									type="text" class="form-control" placeholder="Username"
+									jsf:value="#{inscriptionBean.developpeur.name}" /> <i
+									class="ace-icon fa fa-user"></i>
+							</span>
+							</label> <label class="block clearfix"> <span
+								class="block input-icon input-icon-right"> <input
+									type="password" class="form-control" placeholder="Password"
+									jsf:value="#{inscriptionBean.developpeur.pwd}" /> <i
+									class="ace-icon fa fa-lock"></i>
+							</span>
+							</label>
+
+							<div class="space-24"></div>
+
+							<div class="clearfix">
+								<button type="reset" class="width-30 pull-left btn btn-sm">
+									<i class="ace-icon fa fa-refresh"></i> <span class="bigger-110">Reset</span>
+								</button>
+
+
+								<h:commandButton action="#{inscriptionBean.addDeveloppeur()}"
+									value="Register"
+									styleClass="width-65 pull-right btn btn-sm btn-success" />
+							</div>
+						</fieldset>
+					</h:form>
+				</div>
+
+				<div class="toolbar center">
+					<a href="login.jsf" data-target="#login-box"
+						class="back-to-login-link"> <i
+						class="ace-icon fa fa-arrow-left"></i> Back to login
+					</a>
+				</div>
+			</div>
+			<!-- /.widget-body -->
+		</div>
+		<!-- /.signup-box -->
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/template_profil/template.xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<ui:define name="pageTitle">List of projets</ui:define>
+	<ui:define name="title">
+		<ul class="breadcrumb">
+			<li><i class="ace-icon fa fa-home home-icon"></i> <a
+				href="#{request.contextPath}/pages/profile.jsf">Home</a></li>
+			<li class="active"><a href="viewProjets.jsf">List
+					Projets</a></li>
+			<li class="active">Liste des  Projets</li>
+		</ul>
+
+	</ui:define>
+	<ui:define name="pageHeader">
+		<h1>
+			Mes projets <small> <i
+				class="ace-icon fa fa-angle-double-right"></i> informations sur les projets
+			</small>
+		</h1>
+
+	</ui:define>
+	<ui:define name="pageContent">
+	<h:form>
+	<p:dataTable value="#{projetsBean.projets}" var="projet" rows="10"
+                         paginator="true"
+                         filteredValue="#{projetsBean.projetsFiltred}"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+	 >
+	<p:column headerText="Name" filterBy="#{projet.name}">
+	
+	#{projet.name}
+	</p:column>
+		<p:column headerText="Date creation">
+	
+	<h:outputText value="#{projet.dateCreation}" >
+	<f:convertDateTime pattern="dd-MM-yyyy"/>
+	</h:outputText>
+	</p:column>
+	</p:dataTable>
+	
+	</h:form>
+	</ui:define>
+
+
+</ui:composition>

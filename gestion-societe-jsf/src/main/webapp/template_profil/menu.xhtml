@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+		<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+			<button class="btn btn-success">
+				<i class="ace-icon fa fa-signal"></i>
+			</button>
+
+			<button class="btn btn-info">
+				<i class="ace-icon fa fa-pencil"></i>
+			</button>
+
+			<button class="btn btn-warning">
+				<i class="ace-icon fa fa-users"></i>
+			</button>
+
+			<button class="btn btn-danger">
+				<i class="ace-icon fa fa-cogs"></i>
+			</button>
+		</div>
+
+		<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+			<span class="btn btn-success"></span> <span class="btn btn-info"></span>
+
+			<span class="btn btn-warning"></span> <span class="btn btn-danger"></span>
+		</div>
+	</div>
+	<ul class="nav nav-list">
+
+		<h:form rendered="#{loginBean.role.equals('Directeur')}"
+			styleClass="nav nav-list">
+			<li class=""><a
+				href="#{request.contextPath}/pages/directeur/dashbord.jsf"> <i
+					class="menu-icon fa fa-tachometer"></i> <span class="menu-text">
+						Dashboard </span>
+			</a> <b class="arrow"></b></li>
+
+			<li class=""><a href="index.html#" class="dropdown-toggle">
+					<i class="menu-icon fa fa-desktop"></i> <span class="menu-text">
+						Gestion employees </span> <b class="arrow fa fa-angle-down"></b>
+			</a> <b class="arrow"></b>
+
+				<ul class="submenu">
+					<li class=""><a
+						href="#{request.contextPath}/pages/directeur/gestionDeveloppeurs.jsf">
+							<i class="menu-icon fa fa-caret-right"></i>Gestion developpeurs
+					</a> <b class="arrow"></b></li>
+
+					<li class="menu-icon fa fa-desktop"><a href=""> <i
+							class="menu-icon fa fa-caret-right"></i> Gestion commercilaes
+					</a> <b class="arrow"></b></li>
+
+				</ul></li>
+				
+				
+				<li class=""><a
+				href="#{request.contextPath}/pages/directeur/gestionProjet.jsf"> <i
+					class="menu-icon fa fa-desktop"></i> <span class="menu-text">
+						Gestion projet </span>
+			</a> <b class="arrow"></b></li>
+				<li class=""><a
+				href="#{request.contextPath}/pages/directeur/gestionDepartements.jsf"> <i
+					class="menu-icon fa fa-desktop"></i> <span class="menu-text">
+						Gestion Departement </span>
+			</a> <b class="arrow"></b></li>
+		</h:form>
+
+
+		<h:form rendered="#{loginBean.role.equals('Developpeur')}"
+			styleClass="nav nav-list">
+
+			<li class=""><a href="#{request.contextPath}/pages/developpeur/viewProjets.jsf"> <i
+					class="menu-icon fa fa-list-alt"></i> <span class="menu-text">
+						List des projets </span>
+			</a> <b class="arrow"></b></li>
+
+			<li class=""><a href="calendar.html"> <i
+					class="menu-icon fa fa-calendar"></i> <span class="menu-text">
+						Evennements </span>
+			</a> <b class="arrow"></b></li>
+		</h:form>
+		<h:form rendered="#{loginBean.role.equals('Commercial')}"
+			styleClass="nav nav-list">
+			<li class=""><a href="gallery.html"> <i
+					class="menu-icon fa fa-picture-o"></i> <span class="menu-text">
+						Gallery </span>
+			</a> <b class="arrow"></b></li>
+
+
+		</h:form>
+
+	</ul>
+
+	<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+		<i class="ace-icon fa fa-angle-double-left"
+			data-icon1="ace-icon fa fa-angle-double-left"
+			data-icon2="ace-icon fa fa-angle-double-right"></i>
+	</div>
+
+</ui:composition>

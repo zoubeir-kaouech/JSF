@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/template_profil/template.xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<ui:define name="pageTitle">Gestion developpeurs</ui:define>
+	<ui:define name="title">
+		<ul class="breadcrumb">
+			<li><i class="ace-icon fa fa-home home-icon"></i> <a
+				href="#{request.contextPath}/pages/profile.jsf">Home</a></li>
+			<li class="active"><a href="gestionDeveloppeurs.jsf">gestion
+					developpeurs</a></li>
+			<li class="active">Gestion developpeurs</li>
+		</ul>
+		<!-- /.breadcrumb -->
+
+	</ui:define>
+	<ui:define name="pageHeader">
+		<h1>
+			Gestion Developpeurs <small> <i
+				class="ace-icon fa fa-angle-double-right"></i> CRUD developpeurs
+			</small>
+		</h1>
+
+	</ui:define>
+	<ui:define name="pageContent">
+	<h:form>
+		<h:dataTable value="#{gestionDeveloppeurBean.developpeurs}" var="dev"
+			styleClass="table table-striped table-bordered table-hover">
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+#{dev.name}
+</h:column>
+			<h:column>
+				<f:facet name="header">last Name</f:facet>
+#{dev.lastName}
+</h:column>
+			<h:column>
+				<f:facet name="header">Mail</f:facet>
+#{dev.email}
+</h:column>
+			<h:column>
+				<f:facet name="header">Cin</f:facet>
+#{dev.cin}
+</h:column>
+			<h:column>
+				<f:facet name="header"></f:facet>
+				<button class="btn btn-xs btn-info" jsf:actionListener="#{gestionDeveloppeurBean.update(dev)}">
+					<i class="ace-icon fa fa-pencil bigger-120"></i>
+				</button>
+
+				<button type="submit" class="btn btn-xs btn-danger" jsf:actionListener="#{gestionDeveloppeurBean.doDelete(dev)}">
+					<i class="ace-icon fa fa-trash-o bigger-120"></i>
+				
+				</button>
+			</h:column>
+		</h:dataTable>
+		<br></br>
+		
+		<h:panelGrid rendered="#{gestionDeveloppeurBean.form}" styleClass="col-sm-6">
+		
+										<h3 class="header smaller lighter red">Mise à jour du dévéloppeur</h3>
+<h:panelGrid columns="2">
+										<h:outputText value="Name" />
+<h:inputText value="#{gestionDeveloppeurBean.developpeur.cin}" />
+										</h:panelGrid>
+									</h:panelGrid>
+								
+</h:form>
+	</ui:define>
+
+
+</ui:composition>

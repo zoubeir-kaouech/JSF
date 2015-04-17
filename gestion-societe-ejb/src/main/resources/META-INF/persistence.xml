@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="gestion-societe-ejb">
+	
+	<jta-data-source>java:/societe</jta-data-source>
+	<class>tn.esprit.domain.Adresse</class>
+	<class>tn.esprit.domain.Commercial</class>
+	<class>tn.esprit.domain.Competence</class>
+	<class>tn.esprit.domain.Departement</class>
+	<class>tn.esprit.domain.Developpeur</class>
+	<class>tn.esprit.domain.Directeur</class>
+	<class>tn.esprit.domain.Employee</class>
+	<class>tn.esprit.domain.Projet</class>
+	<class>tn.esprit.domain.Role</class>
+	<class>tn.esprit.domain.RolePK</class>
+	
+	
+	
+	
+		
+
+		<properties>
+<property name="hibernate.hbm2ddl.auto" value="update"></property>
+		<property name="hibernate.show_sql" value="true"/>
+		
+		<property name="hibernate.format_sql" value="true"/>
+
+		</properties>
+	</persistence-unit>
+</persistence>

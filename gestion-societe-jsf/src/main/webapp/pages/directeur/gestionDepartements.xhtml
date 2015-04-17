@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/template_profil/template.xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<ui:define name="pageTitle">gestion departement </ui:define>
+	<ui:define name="title">
+		<ul class="breadcrumb">
+			<li><i class="ace-icon fa fa-home home-icon"></i> <a
+				href="#{request.contextPath}/pages/profile.jsf">Home</a></li>
+			<li class="active"><a href="gestion
+			Departements.jsf">gestion
+					departements</a></li>
+			<li class="active">Gestion Departement</li>
+		</ul>
+
+	</ui:define>
+	<ui:define name="pageHeader">
+		<h1>
+			Gestion des Departements <small> <i
+				class="ace-icon fa fa-angle-double-right"></i> CRUD sur les
+				departement
+			</small>
+		</h1>
+
+	</ui:define>
+	<ui:define name="pageContent">
+
+		<h:form id="dep">
+		<p:growl id="growl"></p:growl>
+			<p:dataTable value="#{gestionDepartementBean.departements}" var="dep"
+				border="1"
+				styleClass="table table-striped table-bordered table-hover">
+				<p:column>
+					<f:facet name="header">Name</f:facet>
+	#{dep.name}
+	</p:column>
+				<p:column>
+					<f:facet name="header">Rue</f:facet>
+	#{dep.adresse.rue}
+	</p:column>
+				<p:column>
+					<f:facet name="header">Code</f:facet>
+	#{dep.adresse.zipCode}
+	</p:column>
+				<p:column>
+					<p:commandButton value="Update" update=":form"
+						oncomplete="PF('departement').show()">
+						<f:setPropertyActionListener
+							target="#{gestionDepartementBean.departement}" value="#{dep}"></f:setPropertyActionListener>
+						<f:setPropertyActionListener
+							target="#{gestionDepartementBean.form}" value="true"></f:setPropertyActionListener>
+					</p:commandButton>
+					<p:commandButton action="#{gestionDepartementBean.doDelete(dep)}"
+						value="Delete" update="@form" />
+				</p:column>
+			</p:dataTable>
+			<br></br>
+			<p:commandButton action="#{gestionDepartementBean.initialisation()}"
+				value="Ajouter" update=":form" oncomplete="PF('departement').show()" />
+		</h:form>
+
+		<p:dialog widgetVar="departement" header="Gestion des départements"
+			modal="true">
+			<h:form id="form">
+
+				<h:panelGrid columns="3">
+					<p:outputLabel value="Name" id="lname" for="name" />
+					<p:inputText id="name"
+						value="#{gestionDepartementBean.departement.name}" required="true"
+						requiredMessage="Input required">
+						<p:ajax event="blur" update="mname lname"></p:ajax>
+					</p:inputText>
+					<p:message for="name" id="mname" />
+					<p:outputLabel value="Rue" id="lrue" for="rue" />
+					<p:inputText id="rue"
+						value="#{gestionDepartementBean.departement.adresse.rue}"
+						required="true" requiredMessage="Input required">
+						<p:ajax event="blur" update="mrue lrue"></p:ajax>
+					</p:inputText>
+					<p:message for="rue" id="mrue" />
+					<p:outputLabel value="Zip code" id="lzip" for="zip"/>
+					<p:inputText id="zip"
+						value="#{gestionDepartementBean.departement.adresse.zipCode}"
+						required="true" requiredMessage="Input required"
+						converterMessage="Champ de type number">
+						<p:ajax event="blur" update="mzip lzip"></p:ajax>
+
+					</p:inputText>
+					<p:message for="zip" id="mzip" />
+					<p:commandButton
+						action="#{gestionDepartementBean.doUpdateDepartement()}"
+						value="Valider" update=":dep" oncomplete="PF('departement').hide()" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+
+
+</ui:composition>

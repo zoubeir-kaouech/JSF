@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/template_profil/template.xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<ui:define name="pageTitle">gestion projet </ui:define>
+	<ui:define name="title">
+		<ul class="breadcrumb">
+			<li><i class="ace-icon fa fa-home home-icon"></i> <a
+				href="#{request.contextPath}/pages/profile.jsf">Home</a></li>
+			<li class="active"><a href="gestionProjet.jsf">gestion
+					Projets</a></li>
+			<li class="active">Gestion Projets</li>
+		</ul>
+
+	</ui:define>
+	<ui:define name="pageHeader">
+		<h1>
+			Gestion des Projets <small> <i
+				class="ace-icon fa fa-angle-double-right"></i> CRUD sur les projets
+			</small>
+		</h1>
+
+	</ui:define>
+	<ui:define name="pageContent">
+		<h:form>
+			<h:dataTable value="#{gestionProjet.projets}" var="projet" styleClass="table table-striped table-bordered table-hover">
+
+				<h:column>
+
+					<f:facet name="header">Nom projet</f:facet>
+#{projet.name}
+</h:column>
+				<h:column>
+					<f:facet name="header">Date creation</f:facet>
+					<h:outputText value="#{projet.dateCreation}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+
+				</h:column>
+
+				<h:column>
+				<f:facet name="header"></f:facet>
+					<h:commandButton value="udpade">
+						<f:setPropertyActionListener target="#{gestionProjet.projet}"
+							value="#{projet}"></f:setPropertyActionListener>
+						<f:setPropertyActionListener
+							target="#{gestionProjet.form
+						}" value="true"></f:setPropertyActionListener>
+					</h:commandButton>
+				</h:column>
+				<h:column>
+					<h:commandButton value="delete"
+						action="#{gestionProjet.doDeleteProjet(projet)}">
+
+					</h:commandButton>
+					<h:commandButton value="affect" action="#{gestionProjet.doFindAll()}">
+						<f:setPropertyActionListener  target="#{gestionProjet.projet}"
+							value="#{projet}"></f:setPropertyActionListener>
+						
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+			<br></br>
+			<h:commandButton value="Ajouter"
+				action="#{gestionProjet.initialiser}" />
+			<br />
+		</h:form>
+		<ui:include src="/pages/directeur/updateProjet.xhtml" />
+		<ui:include src="/pages/directeur/affectProjet.xhtml" />
+	</ui:define>
+
+
+</ui:composition>

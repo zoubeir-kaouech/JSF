@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:form rendered="#{gestionProjet.form}">
+			<h:panelGrid columns="3">
+				<h:outputText value="Nom projet" />
+				<h:inputText id="name" value="#{gestionProjet.projet.name}"
+					required="true" requiredMessage="Champ obligatoire">
+					<f:ajax event="blur" render="mname"></f:ajax>
+				</h:inputText>
+				<h:message for="name" id="mname" />
+
+				<h:outputText value="Date création" />
+				<h:inputText id="date" value="#{gestionProjet.projet.dateCreation}"
+					required="true" requiredMessage="Champ obligatoire"
+					 converterMessage="Date erroné">
+					<f:ajax event="blur" render="mdate"></f:ajax>
+					<f:convertDateTime pattern="MM/dd/yyyy" />
+				</h:inputText>
+				<h:message for="date" id="mdate" style="color:red" />
+			</h:panelGrid>
+			<h:commandButton value="Valider" action="#{gestionProjet.doUpdate()}" />
+		</h:form>
+</ui:composition>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<title><ui:insert name="pageTitle">Welcome</ui:insert></title>
+<ui:include src="/template/imports.xhtml" />
+</h:head>
+<body class="login-layout light-login">
+		<div class="main-container">
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="login-container">
+							<div class="center">
+								<h1>
+									<i class="ace-icon fa fa-dollar green"></i>
+									<span class="red"> Web </span>
+									<span class="grey" id="id-text2"> 4INFOB</span>
+								</h1>
+								<h6 class="blue" id="id-company-text">&#169; Atelier Java EE 2015 Esprit</h6>
+							</div>
+							<div class="space-6"></div>
+							<div class="position-relative">
+							<ui:insert name="pageContent"></ui:insert>
+							</div><!-- /.position-relative -->
+						</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.main-content -->
+		</div><!-- /.main-container -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='dist/js/jquery.min.js'/>");
+		</script>
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='dist/js/jquery.mobile.custom.min.js'/>");
+		</script>
+	</body>
+</html>

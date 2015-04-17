@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:form rendered="#{gestionProjet.form1}">
+
+<h:dataTable value="#{gestionProjet.developpeurs}" var="dev" styleClass="table table-striped table-bordered table-hover">
+
+<h:column>
+<f:facet name="header">Name</f:facet>
+#{dev.name}
+</h:column>
+<h:column>
+<f:facet name="header">Email</f:facet>
+#{dev.email}
+</h:column>
+<h:column>
+<f:facet name="header">Cin</f:facet>
+#{dev.cin}
+</h:column>
+<h:column>
+
+<h:commandButton value="Select" >
+<f:setPropertyActionListener target="#{gestionProjet.form2}" value="true"></f:setPropertyActionListener>
+<f:setPropertyActionListener target="#{gestionProjet.developpeur}" value="#{dev}"></f:setPropertyActionListener>
+</h:commandButton>
+
+</h:column>
+</h:dataTable>
+			<h:panelGrid columns="2" rendered="#{gestionProjet.form2}">
+<h:outputText value="Role"></h:outputText>
+<h:selectOneMenu  value="#{gestionProjet.role}">
+<f:selectItem itemLabel="Choisir.." itemValue=""/>
+<f:selectItem itemLabel="Concepteur" itemValue="Concepteur"/>
+<f:selectItem itemLabel="Testeur" itemValue="Testeur"/>
+<f:selectItem itemLabel="Developpeur" itemValue="Developpeur"/>
+</h:selectOneMenu>
+<h:outputText value="Date"></h:outputText>
+<h:inputText value="#{gestionProjet.date}">
+<f:convertDateTime pattern="dd-MM-yyyy"/>
+</h:inputText>
+<h:commandButton value="Valider" action="#{gestionProjet.doAffect}" />
+</h:panelGrid>
+
+		</h:form>
+</ui:composition>
