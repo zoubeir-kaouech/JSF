@@ -63,11 +63,26 @@
 		<h:panelGrid rendered="#{gestionDeveloppeurBean.form}" styleClass="col-sm-6">
 		
 										<h3 class="header smaller lighter red">Mise à jour du dévéloppeur</h3>
-<h:panelGrid columns="2">
+<h:panelGrid columns="2" cellpadding="12" cellspacing="12">
 										<h:outputText value="Name" />
+<h:inputText value="#{gestionDeveloppeurBean.developpeur.name}" />
+										<h:outputText value="Last Name" />
+<h:inputText value="#{gestionDeveloppeurBean.developpeur.lastName}" />
+										<h:outputText value="Cin" />
 <h:inputText value="#{gestionDeveloppeurBean.developpeur.cin}" />
+										<h:outputText value="Login" />
+<h:inputText value="#{gestionDeveloppeurBean.developpeur.login}" />
+										<h:outputText value="Departement" />
+<h:selectOneMenu value="#{gestionDeveloppeurBean.developpeur.departement}" converter="departementConverter">
+<f:selectItem itemLabel="Select..." itemValue=""/>
+<f:selectItems value="#{gestionDeveloppeurBean.departements}" var="dep" itemValue="#{dep}" itemLabel="#{dep}"></f:selectItems>
+
+</h:selectOneMenu>
+
 										</h:panelGrid>
+										<h:commandButton action="#{gestionDeveloppeurBean.doUpdate}" value="Modifier" />
 									</h:panelGrid>
+									
 								
 </h:form>
 	</ui:define>

@@ -8,7 +8,9 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import tn.esprit.domain.Departement;
 import tn.esprit.domain.Developpeur;
+import tn.esprit.services.gestion.departement.GestionDepartementLocal;
 import tn.esprit.services.gestion.employee.GestionEmployeeLocal;
 
 @ManagedBean
@@ -16,6 +18,16 @@ import tn.esprit.services.gestion.employee.GestionEmployeeLocal;
 public class GestionDeveloppeurBean {
 	@EJB
 	GestionEmployeeLocal local;
+	
+	@EJB
+	GestionDepartementLocal  departementLocal;
+	List<Departement> departements=new ArrayList<Departement>();
+	public List<Departement> getDepartements() {
+		return departements;
+	}
+	public void setDepartements(List<Departement> departements) {
+		this.departements = departements;
+	}
 	Boolean form = false;
 
 	public Boolean getForm() {
@@ -39,6 +51,7 @@ public class GestionDeveloppeurBean {
 	@PostConstruct
 	public void init() {
 		developpeurs = local.findAllDeveloppeurs();
+		departements=departementLocal.findAllDepartements();
 	}
 
 	private List<Developpeur> developpeurs = new ArrayList<Developpeur>();
@@ -62,5 +75,10 @@ public class GestionDeveloppeurBean {
 		this.developpeur = developpeur;
 		form = true;
 		System.out.println(developpeur.getCin());
+	}
+	public String doUpdate(){
+		local.updateEmployee(developpeur);
+form=false;
+		return  null;
 	}
 }
