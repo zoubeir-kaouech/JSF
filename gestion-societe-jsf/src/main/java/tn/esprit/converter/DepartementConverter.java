@@ -12,6 +12,8 @@ public class DepartementConverter implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
+		
+		System.out.println(value);
 		if(!value.equals("")){
 			ApplicationBean bean = FacesContext
 					.getCurrentInstance()
@@ -25,6 +27,7 @@ public class DepartementConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object value) {
+		System.out.println(value);
 		if(value!=null &&!value.equals(""))
 		return String.valueOf(((Departement)value).getId());
 		return "";
