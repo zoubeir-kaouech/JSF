@@ -18,16 +18,19 @@ import tn.esprit.services.gestion.employee.GestionEmployeeLocal;
 public class GestionDeveloppeurBean {
 	@EJB
 	GestionEmployeeLocal local;
-	
 	@EJB
-	GestionDepartementLocal  departementLocal;
-	List<Departement> departements=new ArrayList<Departement>();
-	public List<Departement> getDepartements() {
-		return departements;
+	GestionDepartementLocal departementLocal;
+	
+	private List<Departement> departements=new ArrayList<Departement>();
+	
+
+	public String initialiser(){
+		form=true;
+		developpeur
+		=new Developpeur();
+		return null;
 	}
-	public void setDepartements(List<Departement> departements) {
-		this.departements = departements;
-	}
+
 	Boolean form = false;
 
 	public Boolean getForm() {
@@ -52,6 +55,7 @@ public class GestionDeveloppeurBean {
 	public void init() {
 		developpeurs = local.findAllDeveloppeurs();
 		departements=departementLocal.findAllDepartements();
+	
 	}
 
 	private List<Developpeur> developpeurs = new ArrayList<Developpeur>();
@@ -80,5 +84,13 @@ public class GestionDeveloppeurBean {
 		local.updateEmployee(developpeur);
 form=false;
 		return  null;
+	}
+
+	public List<Departement> getDepartements() {
+		return departements;
+	}
+
+	public void setDepartements(List<Departement> departements) {
+		this.departements = departements;
 	}
 }

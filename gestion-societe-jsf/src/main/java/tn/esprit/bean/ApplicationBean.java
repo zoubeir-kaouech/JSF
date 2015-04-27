@@ -13,11 +13,13 @@ import tn.esprit.services.gestion.employee.GestionEmployeeLocal;
 public class ApplicationBean {
 	@EJB
 	GestionDepartementLocal departementLocal;
-	@EJB
-	GestionEmployeeLocal employeeLocal;
 
-	public Departement findDepartemetById(Integer id) {
+
+	public Departement doFindDepartemetById(Integer id) {
 		return departementLocal.findDepartementById(id);
+	}
+	public Boolean doExistDeperatementByName(String name){
+		return departementLocal.existDeperatementByName(name);
 	}
 
 //	public boolean existLogin(String login) {

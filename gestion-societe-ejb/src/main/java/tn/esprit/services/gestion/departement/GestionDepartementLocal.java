@@ -13,4 +13,5 @@ public interface GestionDepartementLocal {
 	Boolean deleteDepartement(Departement departement);
 	Departement findDepartementById(Integer idDepartement);
 	List<Departement> findAllDepartements();
+	Boolean existDeperatementByName(String name);
 }

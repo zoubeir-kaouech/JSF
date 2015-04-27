@@ -76,8 +76,9 @@ form=false;
 		return null;
 	}
 
-	public String doDelete(Departement departement) {
+	public String doDelete(Departement departement) throws InterruptedException {
 		local.deleteDepartement(departement);
+		Thread.sleep(10000);
 		init();
 		return null;
 	}

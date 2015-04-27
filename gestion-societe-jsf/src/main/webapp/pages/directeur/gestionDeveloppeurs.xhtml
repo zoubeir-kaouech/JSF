@@ -58,6 +58,7 @@
 				</button>
 			</h:column>
 		</h:dataTable>
+		<h:commandButton action="#{gestionDeveloppeurBean.initialiser}" value="new" />
 		<br></br>
 		
 		<h:panelGrid rendered="#{gestionDeveloppeurBean.form}" styleClass="col-sm-6">
@@ -72,18 +73,17 @@
 <h:inputText value="#{gestionDeveloppeurBean.developpeur.cin}" />
 										<h:outputText value="Login" />
 <h:inputText value="#{gestionDeveloppeurBean.developpeur.login}" />
-										<h:outputText value="Departement" />
-<h:selectOneMenu value="#{gestionDeveloppeurBean.developpeur.departement}" converter="departementConverter">
-<f:selectItem itemLabel="Select..." itemValue=""/>
-<f:selectItems value="#{gestionDeveloppeurBean.departements}" var="dep" itemValue="#{dep}" itemLabel="#{dep}"></f:selectItems>
-
-</h:selectOneMenu>
-
+<h:outputText value="Departement" />
+	<h:selectOneMenu value="#{gestionDeveloppeurBean.developpeur.departement}" converter="#{departementConverterM}" >
+	<f:selectItem itemLabel="select.."  itemValue=""/>
+	<f:selectItems value="#{gestionDeveloppeurBean.departements}" var="dep" itemLabel="#{dep.name}" itemValue="#{dep}"></f:selectItems>
+	</h:selectOneMenu>
 										</h:panelGrid>
 										<h:commandButton action="#{gestionDeveloppeurBean.doUpdate}" value="Modifier" />
 									</h:panelGrid>
 									
-								
+	
+							
 </h:form>
 	</ui:define>
 

@@ -56,7 +56,10 @@
 							target="#{gestionDepartementBean.form}" value="true"></f:setPropertyActionListener>
 					</p:commandButton>
 					<p:commandButton action="#{gestionDepartementBean.doDelete(dep)}"
-						value="Delete" update="@form" />
+						value="Delete" update="@form" onstart="PF('statusDialog').show();"
+						onsuccess="PF('statusDialog').hide();">
+						<p:confirm header="Confirmation" message="Confirmer votre opération" icon="ui-icon-closethick"></p:confirm>
+						</p:commandButton>
 				</p:column>
 			</p:dataTable>
 			<br></br>
@@ -70,9 +73,9 @@
 
 				<h:panelGrid columns="3">
 					<p:outputLabel value="Name" id="lname" for="name" />
-					<p:inputText id="name"
+					<p:inputText id="name" validator="departementValidator"
 						value="#{gestionDepartementBean.departement.name}" required="true"
-						requiredMessage="Input required">
+						requiredMessage="Input required" >
 						<p:ajax event="blur" update="mname lname"></p:ajax>
 					</p:inputText>
 					<p:message for="name" id="mname" />

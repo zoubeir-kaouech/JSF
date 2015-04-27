@@ -76,4 +76,12 @@ public class GestionDepartement implements GestionDepartementRemote, GestionDepa
 		Query query = entityManager.createQuery("select e from Departement e ");
 		return query.getResultList();
 	}
+
+	@Override
+	public Boolean existDeperatementByName(String name) {
+		Query query = entityManager.createQuery("select case when( count(e)>0) then true else false end from Departement e where upper(e.name)=:name ");
+		query.setParameter("name", name.toUpperCase());
+		
+		return (Boolean) query.getSingleResult();
+	}
 }
